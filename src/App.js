@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import ProgressBar from './components/ProgressBar';
+import classes from './styles/style.module.css'
 
-function App() {
+const App = () => {
+
+  const items = [
+    {name: 'Sold', color: '#BD1FBE', value: 0.3},
+    {name: 'Got free', color: '#FC64FF', value: 94},
+    {name: 'Burned', color: '#1AE243', value: 45},
+    {name: 'Free float', color: '#fff', value: 80},
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className={classes.content}>
+        <ProgressBar items={items} height={30} width={800} />
+      </div>
     </div>
   );
 }
