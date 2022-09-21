@@ -1,0 +1,23 @@
+.content {
+    height: 400px;
+    max-width: 1200px;
+    width: calc(100vw - 150px);
+    background-color: rgb(129, 129, 129);
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+.progress_bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.progress_bar__block {
+    background-color: rgb(37, 209, 123);
+    border-radius: 5px;
+    margin: 1px;
+    flex-grow:1;
+}
