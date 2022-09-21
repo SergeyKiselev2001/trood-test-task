@@ -2,3 +2,29 @@
   max-width: 100vw;
   max-height: 100vh;
 }
+
+.toggleBtn {
+  position: absolute;
+  top: 100px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  outline: none;
+  padding: 10px 40px;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(44, 32, 32);
+  color: rgb(235, 235, 235);
+  transition: .1s;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.toggleBtn:hover {
+  background-color: rgb(235, 235, 235);
+  color: rgb(44, 32, 32);
+}
+
+.toggleBtn:active {
+  background-color: rgb(182, 182, 182);
+  color: rgb(44, 32, 32);
+}
