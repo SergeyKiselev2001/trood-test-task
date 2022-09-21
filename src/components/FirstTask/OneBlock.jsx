@@ -1,4 +1,4 @@
-import classes from './../styles/style.module.css'
+import classes from './../../styles/first.module.css'
 
 const OneBlock = ({ color }) => {
 

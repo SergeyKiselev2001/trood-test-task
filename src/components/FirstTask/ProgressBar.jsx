@@ -1,8 +1,9 @@
 import OneBlock from "./OneBlock";
-import classes from './../styles/style.module.css'
+import classes from './../../styles/first.module.css'
+import { useSelector } from "react-redux";
 
 const ProgressBar = ({ items, height, width }) => {
-    const blocksAmount = 100;
+    const blocksAmount = useSelector(store => store.paramsReducer).blocksAmount;
     const valueSum = items.reduce((prev, current) => prev += current.value, 0)
 
     const viewArr = items.map(el => {
@@ -38,7 +39,6 @@ const ProgressBar = ({ items, height, width }) => {
     });
 
 
-    debugger
 
     return (
         <div style={{ height, width }} className={classes.progress_bar}>
