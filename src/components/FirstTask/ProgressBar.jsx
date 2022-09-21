@@ -1,6 +1,5 @@
-import OneBlock from "./OneBlock";
-import classes from './../../styles/first.module.css'
 import { useSelector } from "react-redux";
+import classes from './../../styles/first.module.css'
 
 const ProgressBar = ({ items, height, width }) => {
     const blocksAmount = useSelector(store => store.paramsReducer).blocksAmount;
@@ -19,7 +18,7 @@ const ProgressBar = ({ items, height, width }) => {
         const difference = numberOfBlocks - blocksAmount
 
         const biggestElem = viewArr.reduce(
-            (prev, cur) =>  (prev.b > cur.b) ? prev : cur
+            (prev, cur) =>  (prev.amount > cur.amount) ? prev : cur
         )
 
         if (numberOfBlocks > blocksAmount){
@@ -43,7 +42,11 @@ const ProgressBar = ({ items, height, width }) => {
     return (
         <div style={{ height, width }} className={classes.progress_bar}>
             {arrayOfBlocks.map((color, index) => (
-                <OneBlock key={index} color={color} />
+                <div
+                  key={index}
+                  style={{backgroundColor: color}}
+                  className={classes.progress_bar__block}
+                />
             ))}
         </div>
     );

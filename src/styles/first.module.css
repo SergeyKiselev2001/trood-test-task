@@ -4,6 +4,17 @@
     width: calc(100vw - 150px);
     margin: 0 auto;
     margin-top: 200px;
+    animation-name: emergence;
+    animation-duration: .6s;
+}
+
+@keyframes emergence {
+    0%{
+        transform: translateY(-20px); 
+    }
+    100%{
+        transform: translateY(0px);
+    }
 }
 
 .progress_bar {
@@ -55,6 +66,7 @@
 .form__input {
     width: 250px;
     outline: none;
+    cursor: pointer;
 }
 
 
