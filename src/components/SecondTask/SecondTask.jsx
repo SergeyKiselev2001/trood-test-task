@@ -1,36 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import TokenTable from "./TokenTable";
-import { setFilter } from "../../redux/actionCreators";
-import classes from './../../styles/second.module.css'
+import { setFilter, setSortBy } from "../../redux/actionCreators";
+import { select } from "../../scripts/select";
+import classes from "./../../styles/second.module.css";
 
 const SecondTask = () => {
-    const state = useSelector(store => store.tableDataReducer)
-    const { sortBy, filters, tableData } = state
+    const state = useSelector((store) => store.tableDataReducer);
+    const { sortBy, filters } = state;
+    const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+    const items = useSelector((store) => select(filters, store.tableDataReducer.tableData, sortBy));
 
-    const onSort = () => {
-
-    }
-    
-    const onFilter = (value) => {
-        dispatch(setFilter(value))
-    }
-    
-    const onBuy = (id) => {
-        alert(id)
-    }
-
-    let items = tableData
-    
-    if (filters.status !== 'All') {
-        items = tableData.filter(el => el.status === filters.status)
-    }
-
-    if (filters.type !== 'All'){
-        items = items.filter(el => el.type === filters.type)
-    }
-
+    const onSort = (value) => dispatch(setSortBy(value));
+    const onFilter = (value) => dispatch(setFilter(value));
+    const onBuy = (id) => alert(id)
 
     const tokenTableProps = {
         items,
@@ -38,14 +21,14 @@ const SecondTask = () => {
         filters,
         onSort,
         onFilter,
-        onBuy
-    }
+        onBuy,
+    };
 
     return (
         <div className={classes.container}>
             <TokenTable {...tokenTableProps} />
         </div>
-    )
-}
+    );
+};
 
 export default SecondTask;

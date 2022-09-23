@@ -3,7 +3,7 @@ export const CHANGE_WIDTH = 'paramsReducer/change width'
 export const CHANGE_BLOCKS_AMOUNT = 'paramsReducer/change blocks amount'
 
 export const SET_FILTER = 'tableDataReducer/set filter'
-export const SET_TYPE = 'tableDataReducer/set type'
+export const SET_SORT_BY = 'tableDataReducer/set sort by'
 
 export const changeHeight = (payload) => ({
     payload,
@@ -25,7 +25,7 @@ export const setFilter = (payload) => ({
     type: SET_FILTER
 })
 
-export const setType = (payload) => ({
+export const setSortBy = (payload) => ({
     payload,
-    type: SET_TYPE
+    type: SET_SORT_BY
 })

@@ -32,3 +32,8 @@
     text-align: center;
 }
 
+.table__header_cell {
+    user-select: none;
+    cursor: pointer;
+}
+

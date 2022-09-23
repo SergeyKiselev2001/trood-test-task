@@ -10,17 +10,9 @@ const TokenTable = ({
     onFilter,
     onBuy,
 }) => {
-    // id: 1,
-    // name: 'Pyshky.net',
-    // status: 'green',
-    // type: 'TRST',
-    // conditions: 'x2,6 months',
-    // volume: 120000,
-    // roi: 4, free: 20, hedge: 20
-
     return (
         <table className={classes.table}>
-            <HeaderRow filters={filters} onFilter={onFilter} />
+            <HeaderRow filters={filters} onFilter={onFilter} onSort={onSort} />
             {
                 items.map(el => (
                     <TableRow key={el.id} data={el} onBuy={onBuy} />
