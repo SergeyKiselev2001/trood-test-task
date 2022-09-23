@@ -4,7 +4,7 @@ import classes from './../../styles/second.module.css'
 
 const TokenTable = ({
     items,
-    headerCell,
+    sortBy,
     filters,
     onSort,
     onFilter,
@@ -20,7 +20,7 @@ const TokenTable = ({
 
     return (
         <table className={classes.table}>
-            <HeaderRow />
+            <HeaderRow filters={filters} onFilter={onFilter} />
             {
                 items.map(el => (
                     <TableRow key={el.id} data={el} onBuy={onBuy} />
