@@ -1,13 +1,29 @@
+import { SET_FILTER, SET_TYPE } from "../actionCreators";
+
 const initialState = {
   tableData: [
     {id: 1, name: 'Pyshky.net', status: 'green', type: 'TRST', conditions: 'x2,6 months', volume: 120000, roi: 4, free: 20, hedge: 20},
     {id: 2, name: 'NFT-Flowershop', status: 'yellow', type: 'THT', conditions: 'x4,2 years', volume: 80000, roi: 23, free: 12, hedge: 0},
     {id: 4, name: 'Web3 P2P University', status: 'red', type: 'TRST', conditions: 'x2,1 years', volume: 200000, roi: 6, free: 1, hedge: 0}, 
-  ]
+  ],
+  sortBy: '-Name',
+  filters: {
+    status: 'All',
+    type: 'All'
+  }
+
 };
 
 export const tableDataReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SET_FILTER:
+          return {
+            ...state,
+            filters: {
+              ...state.filters,
+              ...action.payload
+            }
+          }
         default:
             return state;
     }
