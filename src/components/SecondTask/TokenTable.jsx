@@ -1,33 +1,21 @@
 import HeaderRow from "./HeaderRow";
 import TableRow from "./TableRow";
-import classes from './../../styles/second.module.css'
+import { select } from "../../scripts/select";
+import classes from "./../../styles/second.module.css";
 
-const TokenTable = ({
-    items,
-    sortBy,
-    filters,
-    onSort,
-    onFilter,
-    onBuy,
-}) => {
-    // id: 1,
-    // name: 'Pyshky.net',
-    // status: 'green',
-    // type: 'TRST',
-    // conditions: 'x2,6 months',
-    // volume: 120000,
-    // roi: 4, free: 20, hedge: 20
+const TokenTable = ({ items, sortBy, filters, onSort, onFilter, onBuy }) => {
+  const selectedItems = select(filters, items, sortBy);
 
-    return (
-        <table className={classes.table}>
-            <HeaderRow filters={filters} onFilter={onFilter} />
-            {
-                items.map(el => (
-                    <TableRow key={el.id} data={el} onBuy={onBuy} />
-                ))
-            }
-        </table>
-    );
+  return (
+    <table className={classes.table}>
+      <HeaderRow filters={filters} onFilter={onFilter} onSort={onSort} />
+      <tbody>
+        { selectedItems.map((el) => (
+          <TableRow key={el.id} data={el} onBuy={onBuy} />
+        ))}
+      </tbody>
+    </table>
+  );
 };
 
 export default TokenTable;
