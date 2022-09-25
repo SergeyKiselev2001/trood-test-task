@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/trood-test-task/static/css/main.a4dd911d.css",
+    "main.js": "/trood-test-task/static/js/main.018c6dd9.js",
+    "index.html": "/trood-test-task/index.html",
+    "main.a4dd911d.css.map": "/trood-test-task/static/css/main.a4dd911d.css.map",
+    "main.018c6dd9.js.map": "/trood-test-task/static/js/main.018c6dd9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4dd911d.css",
+    "static/js/main.018c6dd9.js"
+  ]
+}
