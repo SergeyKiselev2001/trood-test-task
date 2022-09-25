@@ -1,30 +1,37 @@
 export const select = (filters, items, sortBy) => {
-    const sortByCopy = sortBy
-    const ascending = sortBy[0] !== '-'
-    const fieldName = sortByCopy.replace('-', '')
+  const fieldName = `${sortBy}`.replace("-", "");
+  let itemsCopy = [...items];
 
-    let itemsCopy = [...items]
+  const filtering = (field) =>
+    itemsCopy.filter((el) => el[field] === filters[field]);
 
-    if (filters.status !== "All") {
-        itemsCopy = items.filter((el) => el.status === filters.status);
-    }
+  if (filters.status !== "All") itemsCopy = filtering("status");
+  if (filters.type !== "All") itemsCopy = filtering("type");
 
-    if (filters.type !== "All") {
-        itemsCopy = items.filter((el) => el.type === filters.type);
-    }
+  if (typeof items[0][fieldName] === "number") {
+    itemsCopy.sort((a, b) => a[fieldName] - b[fieldName]);
+  }
 
-    if (typeof items[0][fieldName] === 'number'){
-        itemsCopy.sort((a, b) => a[fieldName] - b[fieldName])
-    } 
+  if (sortBy.indexOf("conditions") >= 0) {
+    const timeSort = (time) => {
+      return itemsCopy
+        .filter((el) => el.conditions.indexOf(time) >= 0)
+        .sort((a, b) => {
+          const toNumber = (str) =>
+            Number(str.replace(/[^,.\d]/g, "").replace(",", "."));
+          return toNumber(a[fieldName]) > toNumber(b[fieldName]) ? 1 : -1;
+        });
+    };
 
-    if (sortBy === 'conditions'){
-        const years = itemsCopy.filter(el => el.conditions.indexOf('years') >= 0)
-        const months = itemsCopy.filter(el => el.conditions.indexOf('months') >= 0)
+    const years = timeSort("years");
+    const months = timeSort("months");
 
-        
+    itemsCopy = [...months, ...years];
+  }
 
-        debugger
-    }
+  if (sortBy.indexOf("name") >= 0 || sortBy.indexOf("type") >= 0) {
+    itemsCopy.sort((a, b) => (a[fieldName] > b[fieldName] ? 1 : -1));
+  }
 
-    return ascending ? itemsCopy.reverse() : itemsCopy 
-}
+  return sortBy.indexOf("-") ? itemsCopy.reverse() : itemsCopy;
+};
